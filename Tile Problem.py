@@ -15,17 +15,17 @@ def createAllTiles():
             
 n = 4;
 tiles = [1] * n
-rectangles = [];
 
 all_states = []
 createAllTiles()
-print(list(all_states))
-fig = plt.figure()
-ax = fig.add_subplot(111)
-x = 0
+t = np.arange(0, 2, 1)
+fig, axs = plt.subplots(nrows=sum(len(row) for row in all_states), ncols=1,sharex = True,figsize=(10,n*10))
+i = 0
 
 for permutationState in all_states:
     for state in permutationState:
+        rectangles = [];
+        x = 0
         for tile in state:
             if (tile == 1):
                 rectangles.append(matplotlib.patches.Rectangle((x, 0), 1, 2, 
@@ -37,12 +37,13 @@ for permutationState in all_states:
                 rectangles.append(matplotlib.patches.Rectangle((x, 1), 2, 1, 
                                                                edgecolor="black", facecolor="red", fill=True))
                 x = x+2 
-        x = x+4     
+        for rectangle in rectangles:
+            axs[i].add_patch(rectangle)
+            axs[i].set_xlim([0, n])
+            axs[i].set_ylim([0, 2])
+            axs[i].set_xlabel(state)
+            axs[i].tick_params(left = False, right = False , labelleft = False ,
+                labelbottom = False, bottom = False)
+        i = i + 1
         
-for tile in rectangles:
-    ax.add_patch(tile)
-
-plt.xlim([0, 10 * n])
-plt.ylim([0, 10])
-
 plt.show()
