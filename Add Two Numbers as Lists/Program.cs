@@ -1,5 +1,11 @@
-
-using Sample;
+/*
+public class ListNode
+{
+    public int val;
+    public ListNode next;
+    public ListNode(int x) { this.val = x; this.next = null; }
+}
+*/
 
 ListNode A, B;
 
@@ -7,7 +13,7 @@ var list_A = ListNodeToNumberList(A);
 
 var list_B = ListNodeToNumberList(B);
 
-var result = SumTowNumberListToListNode(list_A, list_B);
+var result = SumOfTwoNumbers(list_A, list_B);
 
 return 1;
 
@@ -27,7 +33,7 @@ List<int> ListNodeToNumberList(ListNode list)
     return result;
 }
 
-ListNode SumTowNumberListToListNode(List<int> num1, List<int> num2)
+ListNode SumOfTwoNumbers(List<int> num1, List<int> num2)
 {
     int carry = 0;
 
